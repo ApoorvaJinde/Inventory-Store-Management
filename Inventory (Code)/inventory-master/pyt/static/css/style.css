@@ -1,0 +1,29 @@
+.btn-pad {
+    margin-right: 5px;
+}
+
+.btn-trim{
+    margin-right: -5px;
+    margin-left: 3x;
+}
+
+.edit_box{
+  border-style: double;
+  border-width: 2px;
+  padding: 5px;
+}
+
+
+body{
+  margin: 0;
+  padding: 0;
+  font-family: Century Gothic;
+  height: 100vh;
+  background-image:  url(../../static/1.jpg);
+  background-size: cover;
+  background-position: center;
+
+}
+
+
+

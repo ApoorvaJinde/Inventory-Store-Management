@@ -1,0 +1,53 @@
+{% extends 'inv/index.html' %}
+
+{% block content %}
+
+
+ <div>
+         <br>
+        <h4>Currently Viewing: {{ header }}</h4>
+ </div>
+    
+       <table class="table table-hover">
+             <thead>
+               <tr>
+                 <th>EMPID</th>
+                 <th>E_FNAME</th>
+                 <th>E_LNAME</th>
+                 <th>AADHARNO</th>
+                 <th>JOINDATE</th>
+                 <th>QUALIFICATION</th>
+                 <th>PHONENO</th>
+                 <th>SALARY</th>
+                 <th>ADDRESS</th>
+                 
+                
+               </tr>
+             </thead>
+            
+            {% for item in items %}
+    
+              <tr>
+                <td>{{item.Empid}}</td>
+                <td>{{item.E_FName}}</td>
+                <td>{{item.E_LName}}</td>
+                <td>{{item.AadharNo}}</td>
+                <td>{{item.JoinDate}}</td>
+                <td>{{item.Qualification}}</td>
+                <td>{{item.PhoneNo}}</td>
+                <td>{{item.Salary}}</td>
+                <td>{{item.Address}}</td>
+                <td>{{item.GSTnoShop}}</td>
+                
+              </tr>
+              <td>
+                <a href="{% url 'edit_Employee_Details' item.pk %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > Edit</a>
+                <a href="{% url 'delete_Employee_Details' item.pk %}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > Delete</a>
+    
+               
+              </td>
+             {% endfor %}
+            
+          </table>
+
+ {% endblock %}

@@ -1,0 +1,145 @@
+<html>
+
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .dropbtn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+    }
+    .navbar{
+      min-height: 80px;
+    }
+
+    .navbar-brand {
+      padding: 0 15 px;
+      height: 100px;
+      line-height: 80px;
+      text-align: center;
+      font-size: 100%;
+    }
+    
+    .navbar-default{
+      padding-left:0px;
+      padding-right:0px;
+      border: 0;
+      font-size: 250%;font-weight: 400;
+
+    }
+
+    .navbar-header {
+    float: left;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+   }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .dropdown-content a:hover {background-color: rgb(56, 238, 153);}
+    
+    .dropdown:hover .dropdown-content {display: block;}
+    
+    .dropdown:hover .dropbtn {background-color: #3e8e41;}
+    </style>
+    
+    <title>Appliance Based management system</title>
+ </head>
+ 
+{% load static %}
+<link rel="stylesheet" href="{% static '/css/style.css'%}">
+<link rel="stylesheet" href="{% static '/css/bootstrap.min.css'%}">
+
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarsExample02">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+            </li>    
+          </ul>
+          <a class="navbar-brand mx-auto" href="#"><span class="mb-0 h1">SINE WAVE CONTROL SYSTEM</span></a>
+
+           <!-- Navbar Right Side -->
+           <div class="navbar-nav">
+             {% if user.is_authenticated %}
+             <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+
+               <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+             {% else %}
+               <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+               <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+             {% endif %}
+            
+            
+              <form class="form-inline my-2 my-md-0">
+             
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <br>
+      <main role="main" class="container">
+        <div class="row">
+          <div class="col-md-8">
+            {% if messages %}
+               {% for message in messages %}
+                  <div class="alert alert-{{ message.tags}}">
+                    {{ message }}
+                  </div>
+               {% endfor %}
+            {% endif %}
+            {% block content %}
+            
+            {% endblock %}
+          </div>
+          <div class="col-md-4">
+            <div class="content-section">
+              <div style="text-align:left;">
+                <div class="dropdown">
+                  <button class="dropbtn">NOTIFICATION</button>
+                  <div class="dropdown-content">
+                    <a href="{% url 'due_payments' %}">Due suppliers</a>
+                    <a href="{% url 'due_amc' %}">Due Services</a>
+                    <a href="{% url 'due_bill' %}">Due customers</a>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+  </body>
+</html>

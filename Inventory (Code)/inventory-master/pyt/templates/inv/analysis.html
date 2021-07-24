@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body style="background-color:rgb(245, 243, 243);">
+
+  <img STYLE="position:absolute; top:10px; left:10px; width:400px; height:200px;" title="Sine Wave Control Systems" src="{% static "/logo.jpg" %}" alt="Logo">
+  
+  <style>
+    .btn-group button {
+      background-color: rgb(255, 255, 255);
+      border: 5px solid rgb(0, 0, 0);
+      color: rgb(0, 0, 0); 
+      padding: 25px 200px; 
+      text-transform:uppercase;
+      text-align: center;
+      cursor: pointer; 
+      text-decoration: none;
+      font-size: 25px;
+      border-radius: 35px;
+      white-space: nowrap;
+      font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+     }
+    
+    /* Add a background color on hover */
+    .btn-group button:hover {
+      background-color: #b6b6b6;
+    }
+  </style>
+
+  <style>
+    body {margin:0;
+      padding: 0;
+  font-family: Century Gothic;
+  height: 100vh;
+  background-image:  url(../../static/1.jpg);
+  background-size: cover;
+  background-position: center;
+}
+    
+    .icon-bar {
+      margin-left: 650px;
+      margin-top: 55px;
+    width: 750px;
+    background-color: rgb(0, 0, 0);
+    overflow: auto;
+    }
+    
+    .icon-bar a {
+      float: left;
+      border-right: 50px solid rgb(245, 243, 243);
+      width: 200px;
+      text-align: center;
+      padding: 40px 0;
+      transition: all 0.3s ease;
+      color: white;
+      font-size: 32px;
+      font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    
+    .icon-bar a:hover {
+      background-color: rgb(112, 107, 107);
+    }
+    
+    
+  </style>
+  
+  <div class="btn-group">
+    <a href="{% url 'charts' %}" target="_top"><button style="position: absolute; left:100px; top:250px"><b>Sales Yearly Analysis</b></button></a>
+    <a href="{% url 'chartj' %}" target="_top"><button style="position: absolute; left:100px; top:450px"><b>Purchase Yearly Analysis</b></button></a>
+    
+  </div>
+    
+
+
+</body>
+</html>

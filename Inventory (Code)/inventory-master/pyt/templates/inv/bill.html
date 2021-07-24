@@ -1,0 +1,46 @@
+{% extends 'inv/index.html' %}
+
+{% block content %}
+
+
+ <div>
+         <br>
+        <h4>Currently Viewing: {{ header }}</h4>
+ </div>
+    
+       <table class="table table-hover">
+             <thead>
+               <tr>
+                 <th>B_Id</th>
+                 <th>BDate</th>
+                 <th>TotalAmt</th>
+                 <th>PaidAmt</th>
+                 <th>PaymentMode</th>
+                 <th>Cust_Id</th>
+                
+               </tr>
+             </thead>
+            
+            {% for item in supplier %}
+    
+              <tr>
+                <td>{{item.B_Id}}</td>
+                <td>{{item.BDate}}</td>
+                <td>{{item.TotalAmt}}</td>
+                <td>{{item.PaidAmt}}</td>
+                <td>{{item.PaymentMode}}</td>
+                <td>{{item.Cust_Id}}</td>
+              </tr>
+              
+              <td>
+    
+                <a href="{% url 'edit_Bill' item.B_Id %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > Edit</a>
+                <a href="{% url 'delete_Bill' item.B_Id %}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > Delete</a>
+                <br>
+              </td>
+
+             {% endfor %}
+            
+          </table>
+
+ {% endblock %}

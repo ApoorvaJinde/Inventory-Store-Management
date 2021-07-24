@@ -1,0 +1,38 @@
+{% extends 'inv/index.html' %}
+
+ {% block content %}
+
+
+   <div>
+         <br>
+         <h4>Currently Viewing: {{ header }}</h4>
+   </div>
+    
+       <table class="table table-hover">
+             <thead>
+               <tr>
+                 <th>GSTNO</th>
+                 <th>S_NAME</th>
+                 <th>PHONE</th>
+                 <th>LOCATION</th>
+                </tr>
+             </thead>
+            
+            {% for item in items %}
+    
+              <tr>
+                <td>{{item.GSTNO}}</td>
+                <td>{{item.S_NAME}}</td>
+                <td>{{item.PHONEN}}</td>
+                <td>{{item.LOCATION}}</td>
+              </tr>
+              <td>
+                
+                <a href="{% url 'edit_Shop' item.pk %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > Edit</a>
+                <a href="{% url 'delete_Shop' item.pk %}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > Delete</a>
+              </td>
+            {% endfor %}
+            
+        </table>
+
+ {% endblock %}

@@ -1,0 +1,132 @@
+<html>
+<head>
+   <style>
+         table {
+            top: 20%;
+            left: 10%;
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        td, th {
+            border: 1px solid #7a7a7a;
+            text-align: left;
+            padding: 8px;
+        }
+        tr {
+            background-color: #dddddd;
+        }
+        div.a {
+    line-height: 50%;
+}
+        @page {
+            size: a4 portrait;
+            @frame header_frame {          
+                -pdf-frame-content: header_content;
+                left: 50pt; width: 512pt; top: 50pt; height: 40pt;
+            }
+            @frame content_frame {          
+                left: 50pt; width: 512pt; top: 90pt; height: 632pt;
+            }
+            @frame footer_frame {           
+                -pdf-frame-content: footer_content;
+                left: 50pt; width: 512pt; top: 772pt; height: 20pt;
+            }
+        }
+    </style>
+</head>
+    
+    <body>
+      <a class="btn btn-info" href="{% url 'pdf_download' %}" target="_blank" download">View Invoice</a>
+      <button onclick="window.open('file.doc')">Download Brochure</button>
+       <div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 padding">
+         <div class="card">
+           <div class="card-header p-4">
+            <center><h1> TAX  INVOICE </h1></center>
+           </div>
+           <div class="card-body">
+             <div class="row mb-4">
+               <div class="col-sm-6">
+                {% for b in bill %}
+                   <p><strong>Date: {{ b.BDate }}</strong></p>
+                {% endfor %}
+                 <h4 class=" text-dark mb-3">From</h5>
+                 <h3 class="text-dark mb-1">SINE WAVE CONTROL SYSTEMS</h3>
+                 <div>Sayed bldg,Opp:Lamington School,</div>
+                 <div>Sir,Siddappa Kambali Marg(Lamington Road),</div>
+                 <div>Huballi-560020.</div>
+                 <div>Ph: 0836-2369102,9448206171.</div>
+                 <div>E-mail: sinewavehubli@gmail.com</div>
+                 <h3 class="text-dark mb-1">GSTIN:29AKMPB6295N1ZD.</h3>
+               </div>
+
+              <div class="col-sm-6">
+                 <h4 class="text-dark mb-3">Buyer</h5>
+                 {% for item in flower %}
+                 <th>Name : {{item.C_Fname}}</th>
+                 <th>{{item.C_Lname}}</th>
+                 <div>Place : {{item.CustAddress}}</div>
+                 <div>Phone number: {{item.PhoneNumber}}</div>
+                 {% endfor %} 
+              </div>
+      
+
+             
+         </div>
+       </div>
+    
+        <!-- Content for Static Frame 'footer_frame' -->
+        
+        <!-- HTML Content -->
+        
+    
+        <hr>
+    <h4>Items</h4>
+        <table>
+          <tr style="border: 5px;">
+            <th>Product Name</th> 
+            <th>HSN</th>
+            <th>GSTAmt</th>
+            <th>TotalPrice</th>
+            <th>Quantity</th>
+            <th>SubTotal</th>
+        </tr>
+        
+        {% for items in product %}
+        
+            <tr>
+            <td>{{ items.Brand}} {{ items.P_Name }}</td>
+            <td>{{ items.ProductId }}</td>        
+            <td>{{ items.GSTAmt }}</td>        
+            <td>{{ items.TotalPrice }}</td>
+            <td>{{ items.Quantity_purchase }}</td>        
+            <td>{{ items.subtotal }}</td>        
+            
+           </tr>
+           
+       {% endfor %}
+        </table>
+    
+        </hr>
+           {% for b in bill %}
+            <p><strong>Total: {{ b.TotalAmt }}</strong></p>
+           {% endfor %}
+
+           <div>Declaration : Goods once sold cannot be taken back.</div>
+           <div>All products are with the manufacturers warrenty</div>
+           <div>We declare that this invoice shows the actual price of the goods</div>
+           <div>described and that all particulars are true and correct</div>
+           <div style = "position:relative; left:70%; top:2px; ">
+                for SINE WAVE CONTROL SYSTEMS
+           </div>
+           <br>
+           <br>
+           <div style = "position:relative; left:74%; top:2px; ">
+                Authorized signatory
+           </div>
+    
+    </body>
+
+
+ </html>

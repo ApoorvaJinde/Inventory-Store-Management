@@ -1,0 +1,43 @@
+{% extends 'inv/index.html' %}
+
+{% block content %}
+
+
+ <div>
+         <br>
+        <h4>Currently Viewing: {{ header }}</h4>
+ </div>
+    
+       <table class="table table-hover">
+             <thead>
+               <tr>
+                 <th>RecNo</th>
+                 
+                 <th>TotalServices</th>
+                 <th>LastServiceDate</th>
+                 <th>NoOfSrvcsDone</th>
+                 <th>AMCQuantity</th>
+                
+               </tr>
+             </thead>
+            
+            {% for item in supplier %}
+    
+              <tr>
+                <td>{{item.RecNo}}</td>
+                
+                <td>{{item.TotalServices}}</td>
+                <td>{{item.LastServiceDate}}</td>
+                <td>{{item.NoOfSrvcsDone}}</td>
+                <td>{{item.AMCQuantity}}</td>
+              </tr>
+              <td>
+    
+                <a href="{% url 'edit_AMC' item.RecNo %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > Edit</a>
+                <a href="{% url 'delete_AMC' item.RecNo %}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > Delete</a>
+              </td>
+            {% endfor %}
+            
+          </table>
+
+ {% endblock %}

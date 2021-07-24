@@ -1,0 +1,44 @@
+{% extends 'inv/index.html' %}
+
+{% block content %}
+
+
+ <div>
+         <br>
+        <h4>Currently Viewing: {{ header }}</h4>
+ </div>
+    
+       <table class="table table-hover">
+             <thead>
+               <tr>
+                 <th>GST_No</th>
+                 <th>DateOfSale</th>
+                 <th>TotalAmt</th>
+                 <th>Paid_Amt</th>
+                 
+                 
+                
+               </tr>
+             </thead>
+            
+            {% for item in supplier %}
+    
+              <tr>
+                <td>{{item.GST_No}}</td>
+                <td>{{item.DateOfSale}}</td>
+                <td>{{item.TotalAmt}}</td>
+                <td>{{item.Paid_Amt}}</td>
+                
+                
+              </tr>
+              <td>
+                <a href="{% url 'edit_Supplier_transaction' item.pk %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > Edit</a>
+                <a href="{% url 'delete_Supplier_transaction' item.pk %}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > Delete</a>
+    
+               
+              </td>
+             {% endfor %}
+            
+          </table>
+
+ {% endblock %}

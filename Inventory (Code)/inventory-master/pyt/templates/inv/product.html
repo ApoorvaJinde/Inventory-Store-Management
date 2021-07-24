@@ -1,0 +1,46 @@
+{% extends 'inv/index.html' %}
+
+{% block content %}
+
+
+ <div>
+         <br>
+        <h4>Currently Viewing: {{ header }}</h4>
+ </div>
+    
+       <table class="table table-hover">
+             <thead>
+               <tr>
+                 <th>PRODUCTID</th>
+                 <th>BRAND</th>
+                 <th>P_NAME</th>
+                 <th>FEATURES</th>
+                 <th>GSTAMT</th>
+                 <th>TOTALPRICE</th>
+                 <th>TOTALQUANTITY</th>
+               </tr>
+             </thead>
+            
+            {% for item in items %}
+    
+              <tr>
+                <td>{{item.ProductId}}</td>
+                <td>{{item.Brand}}</td>
+                <td>{{item.P_Name}}</td>
+                <td>{{item.Features}}</td>
+                <td>{{item.GSTAmt}}</td>
+                <td>{{item.TotalPrice}}</td>
+                <td>{{item.TotalQuantity}}</td>
+                <td>{{item.GSTnoShop}}</td>
+              </tr>
+              <td>
+                <a href="{% url 'edit_Product' item.pk %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > Edit</a>
+                <a href="{% url 'delete_Product' item.pk %}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > Delete</a>
+     
+                <br>
+              </td>
+             {% endfor %}
+            
+          </table>
+
+ {% endblock %}

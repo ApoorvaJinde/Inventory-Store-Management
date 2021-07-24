@@ -1,0 +1,22 @@
+{% extends 'base.htm' %}
+{%block content%}
+    <h1 class="text-center mb-3">Asha info</h1>
+    {% if latest_asha_list %}
+        {% for i in latest_asha_list %}
+            <div class="cars mb-3">
+                <div class="card-body">
+                   <p class="lead">
+                       {{ i.asha_name }}</p>
+                    <a href="{% url 'phc:detail' i.a_id }"
+                        class="btn btn-primary btn-sm">add now
+                    </a>
+                    <a href="{% url 'phc:result' i.a_id }"
+                        class="btn btn-secondary btn-sm">view now
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No asha info available</p>
+    {% endif %}
+{%endblock%}

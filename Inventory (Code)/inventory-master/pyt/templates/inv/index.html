@@ -1,0 +1,74 @@
+{% extends 'inv/base.html' %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+   
+    
+    <style>
+      body{
+        background-color: black;
+        background-image:  url(../../static/1.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+
+      }
+      
+      
+      .card{
+        background-color: #fff;
+        padding: 50px 50px 50px 50px;
+        margin:50px;
+      }
+    </style>
+  </head>
+<body>
+  <div class="container">
+		<div class="row">
+			<div class="col-md"></div>
+
+			<div class="col-md">
+				<div class="card card-body">
+					 <div class="text-center"> 
+					<h3>View Invoices or download directly to PDF</h3>
+					<p>Turn HTML templates into PDF's with Django + XHTML 2 PDF. This example gives you the option of  <br> view a template as a PDF or Downloading directly.</p>
+					<a class="btn btn-info" href="{% url 'pdf_view' %}" target="_blank">View Invoice</a>
+					<a class="btn btn-info"  href="{% url 'pdf_download' %}">Download Invoice</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md"></div>
+		</div>
+	</div>
+
+  <br>
+        {% block content %}
+        {% load static %}
+         <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <div class="button-group">
+          <img STYLE="position:absolute; top:10px; left:10px; width:400px; height:200px;" title="Sine Wave Control Systems" src="{% static "/logo.jpg" %}" alt="Logo">
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     
+
+          <a href="{% url 'add' %}" class="btn btn-dark btn-md btn-trim" role="button"> Display OR Add items</a>
+          <br>
+          <br>
+          <a href="http://127.0.0.1:8000/analysis" class="btn btn-dark btn-md btn-trim" role="button"> Analysis</a>
+          <br>
+          <br>
+          <a href="{% url 'print_bill' %}" class="btn btn-dark btn-md btn-trim" role="button"> Print Bill</a>
+        </div>
+          {% endblock %}
+     
+</body>
+</html>
